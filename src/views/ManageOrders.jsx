@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Badge, message } from "antd";
-import { getOrders, updatePayment } from "../actions/report_actions";
+import { Button, Badge, message, Popconfirm } from "antd";
+import { getOrders, updatePayment, deleteOrder } from "../actions/report_actions";
 import { auth } from "../actions/user_actions";
 import { connect } from "react-redux";
 import moment from "moment";
@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 class ManageOrders extends React.Component {
   state = {
     loading: false,
+    visible: false,
     skip: 0,
     take: 10,
     categories: [],
@@ -36,6 +37,11 @@ class ManageOrders extends React.Component {
         }
       });
     }
+  };
+  cancelOrder = (id) => {
+    this.setState({ visible: false });
+    this.props.dispatch(deleteOrder(id));
+    message.success("Cancel Successfully");
   };
   showdata = () => {
     let newData = [];
@@ -80,6 +86,17 @@ class ManageOrders extends React.Component {
             <Link to={`orderdetail/${item._id}`}>
               <Button style={{ background: "#ff8250" }}>Chi tiết</Button>
             </Link>
+            &nbsp;
+            <Popconfirm
+                title={`Are you sure canel this order?`}
+                onConfirm={() => this.cancelOrder(item._id)}
+                onCancel={this.cancel}
+                okText="Yes"
+                cancelText="No"
+              >
+                <Button type="danger">Xóa</Button>
+              </Popconfirm>
+
           </>
         ];
       });
@@ -103,6 +120,7 @@ class ManageOrders extends React.Component {
             options={options}
           />
         </div>
+        
       </>
     );
   }

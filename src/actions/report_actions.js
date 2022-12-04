@@ -51,3 +51,10 @@ export const reportCustomer = data => {
     payload: request
   };
 };
+export const deleteOrder = id => {
+  const request = axios.get(`/api/payment/delete/${id}`).then(res => res.data);
+  return {
+      type: Types.DELETE_PAYMENT,
+      payload: id,
+  };
+};

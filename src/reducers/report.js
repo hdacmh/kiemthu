@@ -9,6 +9,13 @@ export default function(state = {}, action) {
     case Types.GET_ORDERS:
       return { ...state, allOrders: action.payload };
     case Types.UPDATE_PAYMENT:
+      case Types.DELETE_PAYMENT:
+        return {
+            ...state,
+            allOrders: state.allOrders.filter(
+                product => product._id !== action.payload
+            )
+        };
       return { ...state, order: action.payload };
     case Types.REPORT_PRODUCT:
       return { ...state, data: action.payload.results };
