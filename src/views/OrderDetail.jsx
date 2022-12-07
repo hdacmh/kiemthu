@@ -74,15 +74,15 @@ class OrderDetail extends React.Component {
               </div>
               <div className="row">
                 <div className="text-center">
-                  <h3>Receipt</h3>
+                  <h3>Đơn hàng</h3>
                 </div>
                 <table className="table table-hover">
                   <thead>
                     <tr>
-                      <th>Product</th>
-                      <th>Quantity</th>
-                      <th className="text-center">Price</th>
-                      <th className="text-center">Total</th>
+                      <th>Sản phẩm:</th>
+                      <th>Số lượng</th>
+                      <th className="text-center">Giá:</th>
+                      <th className="text-center">Tổng:</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -149,7 +149,7 @@ class OrderDetail extends React.Component {
                   type="button"
                   className="btn btn-success btn-lg btn-block"
                 >
-                  Confirm   
+                  Xác nhận
                   <span className="glyphicon glyphicon-chevron-right" />
                 </button>
               </div>

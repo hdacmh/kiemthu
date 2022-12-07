@@ -1,12 +1,24 @@
 import React from "react";
-import { Button, Badge, message, Popconfirm } from "antd";
-import { getOrders, updatePayment, deleteOrder } from "../actions/report_actions";
+import {
+  Button,
+  Badge,
+  message,
+  Popconfirm,
+  DatePicker
+} from "antd";
+import {
+  getOrders,
+  updatePayment,
+  deleteOrder,
+} from "../actions/report_actions";
 import { auth } from "../actions/user_actions";
 import { connect } from "react-redux";
 import moment from "moment";
 import MUIDataTable from "mui-datatables";
 import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
+
+
 class ManageOrders extends React.Component {
   state = {
     loading: false,
@@ -14,28 +26,40 @@ class ManageOrders extends React.Component {
     skip: 0,
     take: 10,
     categories: [],
-    id: ""
+    id: "",
+    arrivaltime: ""
+   
   };
 
   componentDidMount() {
     this.props.dispatch(getOrders());
-    this.props.dispatch(auth()).then(res => {
+    this.props.dispatch(auth()).then((res) => {
       console.log(res.payload);
       if (!res.payload.isAdmin) {
         this.props.history.push("/login");
       }
     });
+    console.log(this.state.dateCome)
   }
-  onEditStatus = id => {
+  onEditDate = (date, dateString) => {
+    // console.log(dateString)
+    this.setState({arrivaltime: dateString})
+   
+    
+  };
+
+  onEditStatus = (id) => {
     if (id) {
-      this.props.dispatch(updatePayment(id, { status: "Active" })).then(res => {
-        if (res.payload.success) {
-          setTimeout(() => {
-            this.props.dispatch(getOrders());
-            message.success("Cật nhật thành công!!!");
-          }, 100);
-        }
-      });
+      this.props
+        .dispatch(updatePayment(id, { status: "Active", arrivaltime: this.state.arrivaltime}))
+        .then((res) => {
+          if (res.payload.success) {
+            setTimeout(() => {
+              this.props.dispatch(getOrders());
+              message.success("Cật nhật thành công!!!");
+            }, 100);
+          }
+        });
     }
   };
   cancelOrder = (id) => {
@@ -49,7 +73,7 @@ class ManageOrders extends React.Component {
       newData = this.props.report.allOrders.map((item, i) => {
         return [
           item.user
-            ? item.user.map(item => {
+            ? item.user.map((item) => {
                 return item.name;
               })
             : "",
@@ -60,13 +84,26 @@ class ManageOrders extends React.Component {
             thousandSeparator={true}
             prefix={"$"}
           />,
+          <>
+            {" "}
+            {item.status === "Pending" ? (
+              <>
+              
+              <DatePicker onChange={this.onEditDate} />
+              </>
+            ) : (
+              <p>{item.arrivaltime}</p>
+            )}
+          </>,
+
           item.status === "Pending" ? (
             <>
               <Badge status="processing" /> Đang chờ
             </>
           ) : (
             <>
-              <Badge status="success" />Duyệt
+              <Badge status="success" />
+              Duyệt
             </>
           ),
           <>
@@ -88,28 +125,35 @@ class ManageOrders extends React.Component {
             </Link>
             &nbsp;
             <Popconfirm
-                title={`Are you sure canel this order?`}
-                onConfirm={() => this.cancelOrder(item._id)}
-                onCancel={this.cancel}
-                okText="Yes"
-                cancelText="No"
-              >
-                <Button type="danger">Xóa</Button>
-              </Popconfirm>
-
-          </>
+              title={`Are you sure canel this order?`}
+              onConfirm={() => this.cancelOrder(item._id)}
+              onCancel={this.cancel}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button type="danger">Xóa</Button>
+            </Popconfirm>
+          </>,
         ];
       });
     }
     return newData;
   };
   render() {
-    const columns = ["Tên khách hàng", "Thời gian", "Giá", "Trạng thái", "Tùy chọn"];
+    const columns = [
+      "Tên khách hàng",
+      "Thời gian",
+      "Giá",
+      "Ngày đến",
+      "Trạng thái",
+      "Tùy chọn",
+    ];
     const options = {
       filterType: "dropdown",
       responsive: "scroll",
-      selectableRows: false
+      selectableRows: false,
     };
+    
     return (
       <>
         <div className="content">
@@ -120,14 +164,13 @@ class ManageOrders extends React.Component {
             options={options}
           />
         </div>
-        
       </>
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    report: state.report
+    report: state.report,
   };
 };
 

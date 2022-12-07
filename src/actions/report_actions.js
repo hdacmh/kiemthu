@@ -24,9 +24,9 @@ export const getOrders = () => {
     payload: request
   };
 };
-export const updatePayment = (id, status) => {
+export const updatePayment = (id, status, arrivaltime) => {
   const request = axios
-    .post(`/api/payment/update/${id}`, status)
+    .post(`/api/payment/update/${id}`, status, arrivaltime)
     .then(res => res.data);
   return {
     type: Types.UPDATE_PAYMENT,
