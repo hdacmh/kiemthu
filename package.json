@@ -2,7 +2,7 @@
   "name": "ecommerce_fullstack_project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "/server/server.js",
   "engines": {
     "node": "14.x"
   },
