@@ -23,9 +23,9 @@ class Product extends Component {
     const { user } = this.props;
     if (user.userData.isAuth) {
       this.props.dispatch(addToCart(id));
-      message.success("The Item Added To Cart!");
+      message.success("Sản phẩm đã thêm vào giỏ hàng!");
     } else {
-      message.error("You Must Be Login");
+      message.error("Bạn phải đăng nhập trước");
     }
   };
   addToCart = id => {
@@ -36,7 +36,7 @@ class Product extends Component {
           if (item.quantityCart < item.quantity) {
             this.addToCart0(id);
           } else {
-            message.success("Quantity isn't enough!");
+            message.success("Số lượng không đủ!");
           }
         }
       });

@@ -184,7 +184,7 @@ class Header extends Component {
                                 {this.showLinks(user)}
                             </ul>
                         </div>
-                        <div
+                        {/* <div
                             className="header-grid-right animated wow slideInRight"
                             data-wow-delay=".5s"
                         >
@@ -202,7 +202,7 @@ class Header extends Component {
                                     <a href="#" className="instagram"/>
                                 </li>
                             </ul>
-                        </div>
+                        </div> */}
                         <div className="clearfix"></div>
                     </div>
                     <div className="logo-nav">

@@ -262,13 +262,15 @@ app.post("/api/payment/product", (req, res) => {
         },
         {$unwind: {path: "$product", preserveNullAndEmptyArrays: true}},
         {
-            $group: {
+            $group: { 
                 _id: "$product.name",
                 amount: {
                     $sum: {
                         $multiply: ["$product.quantity", "$product.price"] //nhan
                     }
-                }
+                },
+                
+                
             }
         }
     ]).exec((err, results) => {

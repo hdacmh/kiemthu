@@ -254,7 +254,7 @@ class ProductPage extends Component {
                     Thêm vào giỏ{" "}
                   </a>
                 </div>
-                <div className="social">
+                {/* <div className="social">
                   <div className="social-left">
                     <p>Chia sẻ:</p>
                   </div>
@@ -275,7 +275,7 @@ class ProductPage extends Component {
                     </ul>
                   </div>
                   <div className="clearfix"> </div>
-                </div>
+                </div> */}
               </div>
               <div className="clearfix"> </div>
               <div
