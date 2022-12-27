@@ -4,15 +4,15 @@
   "description": "",
   "main": "server/server.js",
   "engines": {
-    "node": "18.x"
+    "node": "16.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server/server.js",
     "server": "nodemon server/server.js",
     "client": "npm run start --prefix client",
-    "start": "concurrently --kill-others \"npm run server\" \"npm run start --prefix client\""
-    
+    "start": "concurrently --kill-others \"npm run server\" \"npm run start --prefix client\"",
+    "vercel-build": "yarn global add node-gyp"
   },
   "author": "Thanh",
   "license": "ISC",
@@ -48,5 +48,8 @@
     "react-load-script": "0.0.6",
     "save": "^2.3.3",
     "stripe": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2"
   }
 }
