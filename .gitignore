@@ -2,7 +2,7 @@
 /package_lock.json
 /client/node_modules
 /client/package_lock.json
-/.env
+
 
 .DS_Store
 
