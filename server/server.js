@@ -268,7 +268,7 @@ app.post("/api/payment/product", (req, res) => {
                     $sum: {
                         $multiply: ["$product.quantity", "$product.price"] //nhan
                     }
-                },
+                },sold:{$sum: "$product.quantity"}
                 
                 
             }
