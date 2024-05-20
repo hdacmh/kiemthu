@@ -18,7 +18,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import FormPayment from "./FormPayment";
 
 const PUBLIC_KEY =
-  "pk_test_51M7bYzE0FWZxEukkmjkxfqp7Ewyh9ZCiyRGyaxMyt0OSgAsXEJRgBbV19772EjY5g5OzcAWbqBMrdcifuneuOtTt00lxQXQFjB";
+  "pk_test_51KvEYZDxOkdCo8kQ4RrAeKU2JAmrkrFhied8fRdnr8gRq9zaWDf0qVh2s983NWWG2kiaW5UeFSxDrIH8nliKP7vS00tELo9rqZ";
 
 const stripeTestPromise = loadStripe(PUBLIC_KEY);
 export class Cart extends Component {

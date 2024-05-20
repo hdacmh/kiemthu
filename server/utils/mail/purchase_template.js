@@ -33,18 +33,18 @@ const purchase = data => {
                         <td style="background-color: #999592; margin: 0 auto;">
                             <h1 style="box-sizing: border-box; color: white; font-family: Helvetica, Arial, sans-serif; letter-spacing: 0.5px; line-height: 1.4; margin: 0; padding: 15px 25px; text-align: center; text-transform: uppercase;">
                             
-                            Thank you for buying</h1></td>
+                            Cảm ơn quý khách đã mua sản phẩm</h1></td>
                     </tr>
                     <tr>
                         <td style="margin: 0 auto;">
-                             <h2 style="box-sizing: border-box; color: #000000; font-family: Helvetica, Arial, sans-serif; letter-spacing: 0.5px; line-height: 1.4; margin: 0; padding: 15px 25px; text-align: center; text-transform: uppercase;">Your purchase information</h2>
+                             <h2 style="box-sizing: border-box; color: #000000; font-family: Helvetica, Arial, sans-serif; letter-spacing: 0.5px; line-height: 1.4; margin: 0; padding: 15px 25px; text-align: center; text-transform: uppercase;">Thông tin mua hàng của bạn</h2>
                                 ${getItems()}
                         </td>
                     </tr>
                     <tr>
                          <td style="background-color: #999592; margin: 0 auto;">
                                  <p style="box-sizing: border-box; color: white; font-family: Helvetica, Arial, sans-serif; letter-spacing: 0.5px; line-height: 1.4; margin: 0; padding: 15px 25px; text-align: center; text-transform: uppercase;font-size:10px">
-                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        Xin chân thành cảm ơn!
                                  </p></td>
                     </tr>
                 </table>
